@@ -2,6 +2,7 @@ import { managingBetweenTasksAndWaitingQueue } from "./managingBetweenTasksAndWa
 
 import { tasksQueue } from "../main.js";
 import { waitingQueue } from "../main.js";
+import { doneTasks } from "../main.js";
 
 export const setTaskTimeAndRemoveIfDone = function (time) {
   const task = setTimeout(() => {
@@ -9,14 +10,9 @@ export const setTaskTimeAndRemoveIfDone = function (time) {
 
     // find finished task and remove from the tasksQueue
     const position = tasksQueue.findIndex((obj) => obj.taskId === task);
-    const taskRemainedTime = tasksQueue[position].time;
     console.log(tasksQueue[position].time);
-    tasksQueue.splice(position, 1);
-
-    // take away time of removed element from each task in queue for update and show remaining time of each task
-    tasksQueue.forEach((task) => {
-      task.time = task.time - taskRemainedTime;
-    });
+    const removedItem = tasksQueue.splice(position, 1); // remove item and return array of removed
+    doneTasks.push(removedItem);
 
     managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue);
   }, time);

@@ -14,8 +14,8 @@ export const addTask = function (tasksQueue, waitingQueue, timeBetweenClicks) {
     pushObjectIntoArray(newTask, waitingQueue);
   }
 
-  if (timeBetweenClicks) {
-    tasksQueue.forEach((task) => (task.time = task.time - timeBetweenClicks));
-  }
+  // if (timeBetweenClicks) {
+  //   tasksQueue.forEach((task) => (task.time = task.time - timeBetweenClicks));
+  // }
   sortTasksQueue();
 };
