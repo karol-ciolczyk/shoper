@@ -1,4 +1,4 @@
-import { getRandomTime } from "./random-time.js";
+import { getRandomTime } from "./modules/random-time.js";
 
 test("random time(numer)", () => {
   const value = getRandomTime(5, 10);
