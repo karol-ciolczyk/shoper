@@ -1,20 +1,23 @@
 import { addTask } from "./modules/addTask.js";
 import { getTimeBetweenMouseClicks } from "./modules/timeBetweenMouseClicks.js";
-import { updatingTimeOfTasks } from "./modules/updatingTime.js";
 
 export const tasksQueue = [];
 export const waitingQueue = [];
 export const doneTasks = [];
 const clicksArray = [];
 
-updatingTimeOfTasks(tasksQueue);
+setInterval(() => {
+  if (tasksQueue.length > 0) {
+    tasksQueue.forEach((task) => (task.time = task.time - 100));
+  }
+  if (waitingQueue.length > 0) {
+    waitingQueue.forEach((task) => (task.time = task.time + 100));
+  }
+}, 100);
 
 const addButton = document.querySelector(".btn--add");
 
 addButton.addEventListener("click", (event) => {
-  const timeBetweenClicks = getTimeBetweenMouseClicks(clicksArray, tasksQueue);
-  console.log(timeBetweenClicks);
-
   addTask(tasksQueue, waitingQueue, timeBetweenClicks);
 });
 
