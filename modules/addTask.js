@@ -17,6 +17,5 @@ export const addTask = function (tasksQueue, waitingQueue, timeBetweenClicks) {
   if (timeBetweenClicks) {
     tasksQueue.forEach((task) => (task.time = task.time - timeBetweenClicks));
   }
-  // tasksQueue.sort((task1, task2) => (task1.time > task2.time ? -1 : 1));
   sortTasksQueue();
 };
