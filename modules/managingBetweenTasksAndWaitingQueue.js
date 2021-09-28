@@ -1,3 +1,5 @@
+import { setTaskTimeAndRemoveIfDone } from "./setTaskTimeAndRemoveIfDone.js";
+
 export const managingBetweenTasksAndWaitingQueue = function (
   tasksQueue,
   waitingQueue
@@ -6,9 +8,10 @@ export const managingBetweenTasksAndWaitingQueue = function (
   console.log(waitingQueue);
 
   if (tasksQueue.length < 10) {
-    console.log(waitingQueue);
     const removedElement = waitingQueue.shift();
-    if (removedElement) console.log("pushhhhhh");
+    if (removedElement) {
+      tasksQueue.push(removedElement);
+    }
   }
 
   console.log(tasksQueue);

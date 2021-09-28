@@ -1,18 +1,15 @@
 import { pushObjectIntoArray } from "./pushObjectIntoArray.js";
 import { createNewTask } from "./createNewTask.js";
+import { getRandomTime } from "./random-time.js";
 
 export const addTask = function (tasksQueue, waitingQueue, timeBetweenClicks) {
-  // const time = getRandomTime(5, 10) * 1000;
-  console.log(createNewTask(tasksQueue, waitingQueue));
+  const time = getRandomTime(5, 10) * 1000;
 
   if (tasksQueue.length < 10) {
-    // const taskId = setTaskTimeAndRemoveIfDone(tasksQueue, waitingQueue, time); // triger setTimeout API function
-    // const newTask = { taskId, time };
-    const newTask = createNewTask(tasksQueue, waitingQueue, "main");
+    const newTask = createNewTask(tasksQueue, waitingQueue, time, "main");
     pushObjectIntoArray(newTask, tasksQueue);
   } else {
-    // const waitingTask = { time };
-    const newTask = createNewTask(tasksQueue, waitingQueue, "waiting");
+    const newTask = createNewTask(tasksQueue, waitingQueue, time, "waiting");
     pushObjectIntoArray(newTask, waitingQueue);
   }
 
