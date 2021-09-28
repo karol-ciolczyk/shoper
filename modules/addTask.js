@@ -6,10 +6,10 @@ export const addTask = function (tasksQueue, waitingQueue, timeBetweenClicks) {
   const time = getRandomTime(5, 10) * 1000;
 
   if (tasksQueue.length < 10) {
-    const newTask = createNewTask(tasksQueue, waitingQueue, time, "main");
+    const newTask = createNewTask(time, "main");
     pushObjectIntoArray(newTask, tasksQueue);
   } else {
-    const newTask = createNewTask(tasksQueue, waitingQueue, time, "waiting");
+    const newTask = createNewTask(time, "waiting");
     pushObjectIntoArray(newTask, waitingQueue);
   }
 
