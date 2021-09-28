@@ -1,4 +1,5 @@
 import { createNewTask } from "./createNewTask.js";
+import { sortTasksQueue } from "./sortTasksQueue.js";
 // import { setTaskTimeAndRemoveIfDone } from "./setTaskTimeAndRemoveIfDone.js";
 
 export const managingBetweenTasksAndWaitingQueue = function (
@@ -11,10 +12,11 @@ export const managingBetweenTasksAndWaitingQueue = function (
   if (tasksQueue.length < 10) {
     const removedElement = waitingQueue.shift();
     if (removedElement) {
-      console.log(createNewTask(removedElement.time, "main"));
-      tasksQueue.push(removedElement);
+      const newTask = createNewTask(removedElement.time, "main");
+      tasksQueue.push(newTask);
+      sortTasksQueue();
     }
   }
 
-  // console.log(tasksQueue);
+  console.log(tasksQueue);
 };
