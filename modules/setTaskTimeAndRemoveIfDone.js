@@ -9,9 +9,8 @@ export const setTaskTimeAndRemoveIfDone = function (
     console.log("task nr " + task + " done after " + time / 1000 + "sec");
 
     const position = tasksQueue.findIndex((obj) => obj.taskId === task);
-    // console.log(position);
+    console.log(position);
     tasksQueue.splice(position, 1);
-    console.log(tasksQueue);
 
     managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue);
   }, time);
