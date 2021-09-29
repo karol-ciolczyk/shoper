@@ -2,7 +2,7 @@ import { managingBetweenTasksAndWaitingQueue } from "./managingBetweenTasksAndWa
 
 import { tasksQueue } from "../main.js";
 import { waitingQueue } from "../main.js";
-import { doneTasks } from "../main.js";
+import { doneQueue } from "../main.js";
 
 export const setTaskTimeAndRemoveIfDone = function (time) {
   const task = setTimeout(() => {
@@ -11,11 +11,14 @@ export const setTaskTimeAndRemoveIfDone = function (time) {
     // find finished task and remove from the tasksQueue
     const position = tasksQueue.findIndex((obj) => obj.taskId === task);
     const removedItem = tasksQueue.splice(position, 1); // remove item and return array of removed
-    doneTasks.push(removedItem);
+    doneQueue.push(removedItem);
 
-    // find dom task element:
-    const taskToRemove = document.querySelector(`.${task}`);
-    console.log(taskToRemove);
+    // find dom-task-element and remove from DOM:
+    const taskToRemove = document.querySelector(`p[data-id="${task}"]`);
+    taskToRemove.classList.add("task-hide");
+    setTimeout(() => {
+      taskToRemove.remove();
+    }, 300);
 
     managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue);
   }, time);

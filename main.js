@@ -3,7 +3,7 @@ import { createDomElementsP } from "./modules/createDomElementP.js";
 
 export const tasksQueue = [];
 export const waitingQueue = [];
-export const doneTasks = [];
+export const doneQueue = [];
 
 // set interval to update task time
 setInterval(() => {
@@ -42,6 +42,10 @@ addButton.addEventListener("click", (event) => {
     newDomWaitingTasks.forEach((task) => {
       domWaitingTasksQueue.append(task);
     });
+  }
+
+  if (doneQueue.length > 0) {
+    const domDoneTasks = document.querySelector(".queue-done");
   }
 });
 

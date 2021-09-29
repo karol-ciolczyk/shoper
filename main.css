@@ -50,3 +50,20 @@ p {
 .task--waiting {
   background-color: rgba(255, 99, 71, 0.795);
 }
+
+.task--done {
+  background-color: rgba(0, 131, 253, 0.74);
+}
+
+.task-hide {
+  opacity: 1;
+  animation: task-hide 300ms linear forwards;
+}
+@keyframes task-hide {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
