@@ -1,6 +1,6 @@
 import { managingBetweenTasksAndWaitingQueue } from "./managingBetweenTasksAndWaitingQueue.js";
-import { createDomElementsP } from "./createDomElementP.js";
-
+import { createDomElementAndPushToDomQueue } from "./createDomElementAndPushToDomQueue.js";
+// queue objects:
 import { tasksQueue } from "../main.js";
 import { waitingQueue } from "../main.js";
 import { doneQueue } from "../main.js";
@@ -17,27 +17,14 @@ export const setTaskTimeAndRemoveIfDone = function (time) {
 
     // find dom-task-element and remove from DOM:
     const taskToRemove = document.querySelector(`p[data-id="${task}"]`);
-    taskToRemove.classList.add("task-hide");
+    taskToRemove.classList.add("task--hide");
     setTimeout(() => {
       taskToRemove.remove();
     }, 300);
 
-    // if doneQueue is not empty - create dom elements and push there
-    // fisrtly remove previous elemets
-    const previousDoneTasks = document.querySelectorAll(".task--done");
-    previousDoneTasks.forEach((task) => task.remove());
+    // create and add dom task element
+    createDomElementAndPushToDomQueue(removedItem[0]);
 
-    if (doneQueue.length > 0) {
-      const domDoneQueue = document.querySelector(
-        ".section-queues__queue-done"
-      );
-      const newDomDoneTasks = createDomElementsP(doneQueue);
-      newDomDoneTasks.forEach((DomDoneTask) =>
-        domDoneQueue.append(DomDoneTask)
-      );
-    }
-
-    // console.log(doneQueue);
     managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue);
   }, time);
 

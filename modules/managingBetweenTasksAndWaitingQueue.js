@@ -1,5 +1,6 @@
 import { createNewTask } from "./createNewTask.js";
 import { sortTasksQueue } from "./sortTasksQueue.js";
+import { createDomElementAndPushToDomQueue } from "./createDomElementAndPushToDomQueue.js";
 
 export const managingBetweenTasksAndWaitingQueue = function (
   tasksQueue,
@@ -11,6 +12,7 @@ export const managingBetweenTasksAndWaitingQueue = function (
       const newTask = createNewTask(removedElement.time, "main");
       tasksQueue.push(newTask);
       sortTasksQueue();
+      createDomElementAndPushToDomQueue(newTask);
     }
   }
   console.log(tasksQueue);
