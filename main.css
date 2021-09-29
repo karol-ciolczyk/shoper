@@ -52,7 +52,7 @@ p {
 }
 
 .task--done {
-  background-color: rgba(0, 131, 253, 0.74);
+  background-color: rgba(0, 131, 253, 0.582);
 }
 
 .task-hide {

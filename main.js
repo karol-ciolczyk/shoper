@@ -43,10 +43,6 @@ addButton.addEventListener("click", (event) => {
       domWaitingTasksQueue.append(task);
     });
   }
-
-  if (doneQueue.length > 0) {
-    const domDoneTasks = document.querySelector(".queue-done");
-  }
 });
 
 // const showBtn = document.querySelector(".btn--show");
