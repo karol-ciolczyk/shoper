@@ -10,11 +10,11 @@ export const addTask = function (tasksQueue, waitingQueue) {
   if (tasksQueue.length < 10) {
     const newTask = createNewTask(time, "main");
     pushObjectIntoArray(newTask, tasksQueue);
+    sortTasksQueue();
     createDomElementAndPushToDomQueue(newTask);
   } else {
     const newTask = createNewTask(time, "waiting");
     pushObjectIntoArray(newTask, waitingQueue);
     createDomElementAndPushToDomQueue(newTask);
   }
-  sortTasksQueue();
 };

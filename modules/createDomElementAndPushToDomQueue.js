@@ -1,3 +1,5 @@
+import { tasksQueue } from "../main.js";
+
 export const createDomElementAndPushToDomQueue = function (task) {
   const waitingDomQueue = document.querySelector(
     ".section-queues__queue-waiting"
@@ -14,7 +16,22 @@ export const createDomElementAndPushToDomQueue = function (task) {
   if (!task.isWaiting && !task.isDone) {
     pElement.classList.add("task--executing");
     pElement.setAttribute(`data-id`, `${task.taskId}`);
-    tasksDomQueue.append(pElement);
+
+    const taskPosition = tasksQueue.findIndex(
+      (obj) => obj.taskId === task.taskId
+    );
+    if (taskPosition === 0) {
+      tasksDomQueue.prepend(pElement);
+    } else {
+      const BeforeSiblingPosition = taskPosition - 1;
+      const BeforeSiblingTask = tasksQueue[BeforeSiblingPosition];
+      const BeforeSiblingId = BeforeSiblingTask.taskId;
+      const BeforeSiblingDomElement = document.querySelector(
+        `p[data-id="${BeforeSiblingId}"]`
+      );
+      console.log(BeforeSiblingDomElement);
+      BeforeSiblingDomElement.insertAdjacentElement("afterend", pElement);
+    }
   }
   if (task.isWaiting && !task.isDone) {
     pElement.classList.add("task--waiting");
