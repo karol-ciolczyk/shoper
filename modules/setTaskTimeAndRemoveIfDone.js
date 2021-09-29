@@ -10,9 +10,12 @@ export const setTaskTimeAndRemoveIfDone = function (time) {
 
     // find finished task and remove from the tasksQueue
     const position = tasksQueue.findIndex((obj) => obj.taskId === task);
-    console.log(tasksQueue[position].time);
     const removedItem = tasksQueue.splice(position, 1); // remove item and return array of removed
     doneTasks.push(removedItem);
+
+    // find dom task element:
+    const taskToRemove = document.querySelector(`.${task}`);
+    console.log(taskToRemove);
 
     managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue);
   }, time);

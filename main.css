@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(51, 51, 51);
+}
+
+.section-queues {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+
+.section-queues__queue {
+  display: inline-block;
+  width: 200px;
+  height: 500px;
+  margin: 20px 30px;
+  border: 2px solid rgba(0, 0, 0, 0.527);
+  border-radius: 5px;
+  box-shadow: 5px 8px 15px rgba(105, 105, 105, 0.425);
+}
+
+p {
+  border: 1px solid rgb(138, 138, 138);
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px 5px;
+  box-shadow: 2px 3px 5px rgba(105, 105, 105, 0.301);
+}
+
+.task--executing {
+  background-color: greenyellow;
+  animation-direction: alternate;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-name: executing;
+}
+@keyframes executing {
+  0% {
+    background-color: greenyellow;
+  }
+  100% {
+    background-color: rgba(172, 255, 47, 0.233);
+  }
+}
+
+.task--waiting {
+  background-color: rgba(255, 99, 71, 0.795);
+}
