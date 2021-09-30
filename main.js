@@ -20,7 +20,6 @@ const addButton = document.querySelector(".btn--add");
 
 addButton.addEventListener("click", () => {
   addTask(tasksQueue, waitingQueue);
-  console.log(waitingQueue);
 });
 
 const tasksDomQueue = document.querySelector(".section-queues__queue-tasks");
