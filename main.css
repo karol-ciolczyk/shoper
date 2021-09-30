@@ -99,3 +99,14 @@ p {
     opacity: 1;
   }
 }
+.task--comming {
+  animation: comming 300ms linear forwards;
+}
+@keyframes comming {
+  0% {
+    transform: translate(0px, 100px);
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}

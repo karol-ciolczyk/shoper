@@ -1,6 +1,6 @@
 import { tasksQueue } from "../../main.js";
 
-export const createDomElementAndPushToDomQueue = function (task) {
+export const createDomElementAndPushToDomQueue = function (task, isComming) {
   const waitingDomQueue = document.querySelector(
     ".section-queues__queue-waiting"
   );
@@ -22,6 +22,7 @@ export const createDomElementAndPushToDomQueue = function (task) {
   if (!task.isWaiting && !task.isDone) {
     pElement.append(deleteButton);
     pElement.classList.add("task--executing");
+    if (isComming) pElement.classList.add("task--comming");
 
     const taskPosition = tasksQueue.findIndex(
       (obj) => obj.taskId === task.taskId

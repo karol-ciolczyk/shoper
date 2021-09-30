@@ -9,13 +9,12 @@ export const managingBetweenTasksAndWaitingQueue = function (
 ) {
   if (tasksQueue.length < 10) {
     const removedElement = waitingQueue.shift();
-    console.log(removedElement);
     if (removedElement) {
       removeDomTaskElement(removedElement.taskId, waitingQueue);
       const newTask = createNewTask(removedElement.time, "main");
       tasksQueue.push(newTask);
       sortTasksQueue();
-      createDomElementAndPushToDomQueue(newTask);
+      createDomElementAndPushToDomQueue(newTask, true);
     }
   }
 };
