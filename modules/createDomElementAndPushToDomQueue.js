@@ -12,8 +12,14 @@ export const createDomElementAndPushToDomQueue = function (task) {
     : `task time: ${task.time}`;
   const pElement = document.createElement("p");
   pElement.textContent = content;
+  const deleteButton = document.createElement("a");
+  deleteButton.textContent = "x";
+  deleteButton.setAttribute("href", "");
+  deleteButton.setAttribute("data-btnid", `${task.taskId}`);
+  deleteButton.classList.add("btn-delete");
 
   if (!task.isWaiting && !task.isDone) {
+    pElement.append(deleteButton);
     pElement.classList.add("task--executing");
     pElement.setAttribute(`data-id`, `${task.taskId}`);
 

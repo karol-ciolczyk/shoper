@@ -23,12 +23,31 @@
   box-shadow: 5px 8px 15px rgba(105, 105, 105, 0.425);
 }
 
+.section-queues__queue-done {
+  overflow-y: scroll;
+}
+.section-queues__queue-waiting {
+  overflow-y: scroll;
+}
+
 p {
+  position: relative;
   border: 1px solid rgb(138, 138, 138);
   border-radius: 5px;
   padding: 5px;
   margin: 10px 5px;
   box-shadow: 2px 3px 5px rgba(105, 105, 105, 0.301);
+}
+
+.btn-delete {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  padding: 0px 3px;
+  background-color: tomato;
+  border-radius: 3px;
 }
 
 .task--executing {

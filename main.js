@@ -20,7 +20,14 @@ addButton.addEventListener("click", (event) => {
   addTask(tasksQueue, waitingQueue);
 });
 
-// const showBtn = document.querySelector(".btn--show");
-// showBtn.addEventListener("click", () => {
-//   alert(JSON.stringify(tasksQueue));
-// });
+const tasksDomQueue = document.querySelector(".section-queues__queue-tasks");
+tasksDomQueue.addEventListener("click", (event) => {
+  event.preventDefault();
+  console.log(event.target.dataset.btnid);
+  const timeoutId = event.target.dataset.btnid;
+
+  clearTimeout(timeoutId);
+
+  const removingElement = document.querySelector(`p[data-id="${timeoutId}"]`);
+  removingElement.remove();
+});
