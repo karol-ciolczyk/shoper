@@ -8,12 +8,15 @@ export const managingBetweenTasksAndWaitingQueue = function (
   waitingQueue,
   force = false
 ) {
-  console.log(tasksQueue);
   if (tasksQueue.length < 10 || force) {
     const removedElement = waitingQueue.shift();
     if (removedElement) {
       removeDomTaskElement(removedElement.taskId, waitingQueue);
-      const newTask = createNewTask(removedElement.time, "main");
+      const newTask = createNewTask(
+        removedElement.initialTime,
+        "main",
+        removedElement.time
+      );
       tasksQueue.push(newTask);
       sortTasksQueue();
 

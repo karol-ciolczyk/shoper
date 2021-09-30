@@ -46,7 +46,7 @@ export const createDomElementAndPushToDomQueue = function (task, isComming) {
   }
   if (task.isDone) {
     pElement.classList.add("task--done");
-    pElement.classList.add("task--appear");
-    doneDomQueue.append(pElement);
+    pElement.classList.add("task--comming");
+    doneDomQueue.prepend(pElement);
   }
 };

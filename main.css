@@ -105,7 +105,7 @@ p {
 }
 @keyframes comming {
   0% {
-    transform: translate(-130px, 0px);
+    transform: translate(-200px, 0px);
   }
   100% {
     transform: translate(0px, 0px);

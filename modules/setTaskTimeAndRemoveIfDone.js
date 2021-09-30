@@ -5,9 +5,10 @@ import { tasksQueue } from "../main.js";
 import { waitingQueue } from "../main.js";
 import { doneQueue } from "../main.js";
 
-export const setTaskTimeAndRemoveIfDone = function (time) {
+export const setTaskTimeAndRemoveIfDone = function (time, timeForLog) {
+  const print = timeForLog ? timeForLog : time;
   const task = setTimeout(() => {
-    console.log("task nr " + task + " done after " + time / 1000 + "sec");
+    console.log("task nr " + task + " finished after " + print / 1000 + "sec");
 
     // find finished task and remove from the tasksQueue
     const position = tasksQueue.findIndex((obj) => obj.taskId === task);
@@ -17,6 +18,7 @@ export const setTaskTimeAndRemoveIfDone = function (time) {
 
     // find dom-task-element and remove from DOM:
     const taskToRemove = document.querySelector(`p[data-id="${task}"]`);
+    taskToRemove.classList.remove("task--comming");
     taskToRemove.classList.add("task--hide");
     setTimeout(() => {
       taskToRemove.remove();
