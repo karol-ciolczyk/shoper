@@ -100,8 +100,8 @@ p {
   }
 }
 .task--comming {
-  animation: comming 500ms linear forwards;
-  animation: executing 500ms infinite alternate;
+  animation: comming 500ms linear forwards, executing 500ms infinite alternate;
+  /* animation: executing 500ms infinite alternate; */
 }
 @keyframes comming {
   0% {

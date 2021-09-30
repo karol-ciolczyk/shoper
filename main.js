@@ -31,9 +31,6 @@ tasksDomQueue.addEventListener("click", (event) => {
   const elementId = event.target.dataset.btnid;
   removeDomTaskElement(elementId, tasksQueue);
 
-  // const removedElement = waitingQueue.shift();
-  // const elementId = removedElement.taskId;
-  // removeDomTaskElement(elementId, waitingQueue);
   managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue, true);
 });
 waitingDomQueue.addEventListener("click", (event) => {

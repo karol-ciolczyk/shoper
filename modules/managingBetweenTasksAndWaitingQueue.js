@@ -6,7 +6,7 @@ import { removeDomTaskElement } from "./DOM-manipulation/removeDomTaskElement.js
 export const managingBetweenTasksAndWaitingQueue = function (
   tasksQueue,
   waitingQueue,
-  force
+  force = false
 ) {
   console.log(tasksQueue);
   if (tasksQueue.length < 10 || force) {
