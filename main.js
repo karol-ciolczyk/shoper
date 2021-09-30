@@ -1,5 +1,6 @@
 import { addTask } from "./modules/addTask.js";
 import { removeDomTaskElement } from "./modules/DOM-manipulation/removeDomTaskElement.js";
+import { managingBetweenTasksAndWaitingQueue } from "./modules/managingBetweenTasksAndWaitingQueue.js";
 
 export const tasksQueue = [];
 export const waitingQueue = [];
@@ -17,7 +18,7 @@ setInterval(() => {
 
 const addButton = document.querySelector(".btn--add");
 
-addButton.addEventListener("click", (event) => {
+addButton.addEventListener("click", () => {
   addTask(tasksQueue, waitingQueue);
 });
 
@@ -29,6 +30,11 @@ tasksDomQueue.addEventListener("click", (event) => {
   event.preventDefault();
   const elementId = event.target.dataset.btnid;
   removeDomTaskElement(elementId, tasksQueue);
+
+  // const removedElement = waitingQueue.shift();
+  // const elementId = removedElement.taskId;
+  // removeDomTaskElement(elementId, waitingQueue);
+  managingBetweenTasksAndWaitingQueue(tasksQueue, waitingQueue, true);
 });
 waitingDomQueue.addEventListener("click", (event) => {
   event.preventDefault();

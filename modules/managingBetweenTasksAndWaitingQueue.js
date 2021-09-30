@@ -5,15 +5,18 @@ import { removeDomTaskElement } from "./DOM-manipulation/removeDomTaskElement.js
 
 export const managingBetweenTasksAndWaitingQueue = function (
   tasksQueue,
-  waitingQueue
+  waitingQueue,
+  force
 ) {
-  if (tasksQueue.length < 10) {
+  console.log(tasksQueue);
+  if (tasksQueue.length < 10 || force) {
     const removedElement = waitingQueue.shift();
     if (removedElement) {
       removeDomTaskElement(removedElement.taskId, waitingQueue);
       const newTask = createNewTask(removedElement.time, "main");
       tasksQueue.push(newTask);
       sortTasksQueue();
+
       createDomElementAndPushToDomQueue(newTask, true);
     }
   }
