@@ -2,7 +2,7 @@ import { pushObjectIntoArray } from "./pushObjectIntoArray.js";
 import { createNewTask } from "./createNewTask.js";
 import { getRandomTime } from "./random-time.js";
 import { sortTasksQueue } from "./sortTasksQueue.js";
-import { createDomElementAndPushToDomQueue } from "./createDomElementAndPushToDomQueue.js";
+import { createDomElementAndPushToDomQueue } from "./DOM-manipulation/createDomElementAndPushToDomQueue.js";
 
 export const addTask = function (tasksQueue, waitingQueue) {
   const time = getRandomTime(5, 10) * 1000;

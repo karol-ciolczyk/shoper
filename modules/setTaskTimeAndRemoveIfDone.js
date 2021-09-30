@@ -1,5 +1,5 @@
 import { managingBetweenTasksAndWaitingQueue } from "./managingBetweenTasksAndWaitingQueue.js";
-import { createDomElementAndPushToDomQueue } from "./createDomElementAndPushToDomQueue.js";
+import { createDomElementAndPushToDomQueue } from "./DOM-manipulation/createDomElementAndPushToDomQueue.js";
 // queue objects:
 import { tasksQueue } from "../main.js";
 import { waitingQueue } from "../main.js";

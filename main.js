@@ -1,4 +1,5 @@
 import { addTask } from "./modules/addTask.js";
+import { removeDomTaskElement } from "./modules/DOM-manipulation/removeDomTaskElement.js";
 
 export const tasksQueue = [];
 export const waitingQueue = [];
@@ -20,27 +21,17 @@ addButton.addEventListener("click", (event) => {
   addTask(tasksQueue, waitingQueue);
 });
 
-const removeDomTaskElement = function (event, queue) {
-  event.preventDefault();
-  const elementId = event.target.dataset.btnid;
-
-  if (elementId) {
-    const taskIndex = queue.findIndex((task) => task.taskId === elementId);
-    queue.splice(taskIndex, 1);
-
-    clearTimeout(elementId);
-    const removingElement = document.querySelector(`p[data-id="${elementId}"]`);
-    removingElement.remove();
-  }
-};
-
 const tasksDomQueue = document.querySelector(".section-queues__queue-tasks");
 const waitingDomQueue = document.querySelector(
   ".section-queues__queue-waiting"
 );
 tasksDomQueue.addEventListener("click", (event) => {
-  removeDomTaskElement(event, tasksQueue);
+  event.preventDefault();
+  const elementId = event.target.dataset.btnid;
+  removeDomTaskElement(elementId, tasksQueue);
 });
 waitingDomQueue.addEventListener("click", (event) => {
-  removeDomTaskElement(event, waitingQueue);
+  event.preventDefault();
+  const elementId = event.target.dataset.btnid;
+  removeDomTaskElement(elementId, waitingQueue);
 });

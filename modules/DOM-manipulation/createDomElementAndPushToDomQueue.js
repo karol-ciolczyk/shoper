@@ -1,4 +1,4 @@
-import { tasksQueue } from "../main.js";
+import { tasksQueue } from "../../main.js";
 
 export const createDomElementAndPushToDomQueue = function (task) {
   const waitingDomQueue = document.querySelector(
