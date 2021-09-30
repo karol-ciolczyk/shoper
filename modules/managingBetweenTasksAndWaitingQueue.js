@@ -15,5 +15,4 @@ export const managingBetweenTasksAndWaitingQueue = function (
       createDomElementAndPushToDomQueue(newTask);
     }
   }
-  console.log(tasksQueue);
 };

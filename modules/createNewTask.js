@@ -12,7 +12,13 @@ export const createNewTask = function (time, whichTask) {
     };
     return newTask;
   } else if (whichTask === "waiting") {
-    const newWaitingTask = { time, isDone: false, isWaiting: true };
+    const randomId = Math.random().toFixed(4);
+    const newWaitingTask = {
+      time,
+      isDone: false,
+      isWaiting: true,
+      taskId: randomId,
+    };
     return newWaitingTask;
   }
 };

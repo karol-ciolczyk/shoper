@@ -20,14 +20,27 @@ addButton.addEventListener("click", (event) => {
   addTask(tasksQueue, waitingQueue);
 });
 
-const tasksDomQueue = document.querySelector(".section-queues__queue-tasks");
-tasksDomQueue.addEventListener("click", (event) => {
+const removeDomTaskElement = function (event, queue) {
   event.preventDefault();
-  console.log(event.target.dataset.btnid);
-  const timeoutId = event.target.dataset.btnid;
+  const elementId = event.target.dataset.btnid;
 
-  clearTimeout(timeoutId);
+  if (elementId) {
+    const taskIndex = queue.findIndex((task) => task.taskId === elementId);
+    queue.splice(taskIndex, 1);
 
-  const removingElement = document.querySelector(`p[data-id="${timeoutId}"]`);
-  removingElement.remove();
+    clearTimeout(elementId);
+    const removingElement = document.querySelector(`p[data-id="${elementId}"]`);
+    removingElement.remove();
+  }
+};
+
+const tasksDomQueue = document.querySelector(".section-queues__queue-tasks");
+const waitingDomQueue = document.querySelector(
+  ".section-queues__queue-waiting"
+);
+tasksDomQueue.addEventListener("click", (event) => {
+  removeDomTaskElement(event, tasksQueue);
+});
+waitingDomQueue.addEventListener("click", (event) => {
+  removeDomTaskElement(event, waitingQueue);
 });
